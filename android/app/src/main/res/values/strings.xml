@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FOCUS</string>
+    <string name="widget_overview_desc">FOCUS Daily Overview &amp; Productivity Score</string>
+    <string name="widget_quick_actions_desc">FOCUS Quick Actions &amp; Launcher</string>
+    <string name="widget_tasks_description">FOCUS Top Tasks &amp; Quick Capture</string>
+    <string name="widget_habits_description">FOCUS Habits Streak &amp; Daily Progress</string>
+    <string name="widget_timer_description">FOCUS Deep Work Focus Timer &amp; Launcher</string>
+    <string name="accessibility_service_description">FOCUS Focus Guard observes distracting app switches to deliver user-approved focus return interventions without capturing screen content.</string>
+</resources>
