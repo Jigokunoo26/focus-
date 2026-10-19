@@ -34,6 +34,9 @@ jobs:
           channel: 'stable'
           cache: true
 
+      - name: Make Gradle Wrapper Executable
+        run: chmod +x android/gradlew
+
       - name: Install Dependencies
         run: flutter pub get
 
@@ -93,10 +96,10 @@ jobs:
           path: release-artifacts\FOCUS-Windows-v1.0.0.zip
 
   # -------------------------------------------------------------
-  # 3. iOS IPA Build
+  # 3. iOS Runner Build
   # -------------------------------------------------------------
   build-ios:
-    name: Build iOS IPA
+    name: Build iOS App
     runs-on: macos-latest
     steps:
       - name: Checkout Repository
@@ -112,26 +115,22 @@ jobs:
       - name: Install Dependencies
         run: flutter pub get
 
-      - name: Build iOS IPA (unsigned for direct archive / distribution)
-        run: flutter build ipa --no-codesign
+      - name: Build iOS Application (Unsigned Release)
+        run: flutter build ios --release --no-codesign
 
-      - name: Package iOS Artifacts
+      - name: Package iOS Bundle
         run: |
           mkdir -p release-artifacts
-          if [ -f build/ios/ipa/*.ipa ]; then
-            cp build/ios/ipa/*.ipa release-artifacts/FOCUS-iOS-v1.0.0.ipa
-          else
-            cd build/ios/archive && zip -r ../../../release-artifacts/FOCUS-iOS-Runner.xcarchive.zip Runner.xcarchive
-          fi
+          cd build/ios/iphoneos && zip -r ../../../release-artifacts/FOCUS-iOS-v1.0.0.zip Runner.app
 
       - name: Upload iOS Artifact
         uses: actions/upload-artifact@v4
         with:
           name: FOCUS-iOS-Bundle
-          path: release-artifacts/*
+          path: release-artifacts/FOCUS-iOS-v1.0.0.zip
 
   # -------------------------------------------------------------
-  # 4. Publish GitHub Release with all 3 variants
+  # 4. Publish GitHub Release with all variants
   # -------------------------------------------------------------
   publish-release:
     name: Publish Multi-Platform Release
@@ -165,15 +164,10 @@ jobs:
           tag_name: ${{ github.ref_name || 'v1.0.0' }}
           name: "FOCUS Personal OS - Release ${{ github.ref_name || 'v1.0.0' }}"
           body: |
-            ## FOCUS Personal OS - Multi-Platform Release
+            ## FOCUS Personal OS - Production Release
             
-            This release includes production variants across all platforms:
+            Download the production binaries directly below:
             
-            - 🤖 **Android**: `FOCUS-Android-v1.0.0.apk` (Offline-first, Phase 5/7 Focus Guard & Critical Alerts, Home Screen Widgets)
-            - 🪟 **Windows**: `FOCUS-Windows-v1.0.0.zip` (Standalone portable Windows desktop bundle with `focus_app.exe`)
-            - 🍎 **iOS**: `FOCUS-iOS-v1.0.0.ipa` / `Runner.xcarchive` (Apple-grade frosted glass squircle aesthetic & Home Screen Widget extension)
-            
-            ### Integrity & Privacy
-            - 100% Local-First SQLite Persistence
-            - Zero Cloud Dependencies & Zero Telemetry
-            - Verified 23/23 Automated Unit & Integration Tests Passing
+            - 🤖 **Android**: `FOCUS-Android-v1.0.0.apk`
+            - 🪟 **Windows**: `FOCUS-Windows-v1.0.0.zip` (Portable bundle with `focus_app.exe`)
+            - 🍎 **iOS**: `FOCUS-iOS-v1.0.0.zip` (Unsigned `Runner.app` for device/simulator deployment)

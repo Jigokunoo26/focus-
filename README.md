@@ -14,15 +14,16 @@
 
 ---
 
-### ⬇️ Direct Download Links (v1.0.0 Release)
+### ⬇️ Direct Download Links
 
-| Platform | Download Link | Description |
+| Platform | Direct Download Link | Description |
 | :--- | :--- | :--- |
-| 🤖 **Android** | [**Download Android APK**](https://github.com/Jigokunoo26/focus-/releases/download/v1.0.0/FOCUS-Android-v1.0.0.apk) | Direct offline installer for all Android phones |
-| 🪟 **Windows** | [**Download Windows Desktop**](https://github.com/Jigokunoo26/focus-/releases/download/v1.0.0/FOCUS-Windows-v1.0.0.zip) | Portable Windows standalone bundle (`focus_app.exe`) |
-| 🍎 **iOS** | [**Download iOS Package**](https://github.com/Jigokunoo26/focus-/releases/download/v1.0.0/FOCUS-iOS-v1.0.0.ipa) | iOS application package for Xcode / Test deployment |
+| 🤖 **Android** | [**⬇️ Direct Download APK (Instant)**](https://github.com/Jigokunoo26/focus-/raw/main/releases/FOCUS-Android-v1.0.0.apk) | Direct offline installer (No waiting, ready now) |
+| 🪟 **Windows** | [**View Windows Release**](https://github.com/Jigokunoo26/focus-/releases) | Standalone portable bundle (`focus_app.exe`) |
+| 🍎 **iOS** | [**View iOS Release**](https://github.com/Jigokunoo26/focus-/releases) | iOS application package for Xcode / Test deployment |
 
-👉 **[View All Releases & Assets](https://github.com/Jigokunoo26/focus-/releases/latest)**
+👉 **[View All Releases & Assets](https://github.com/Jigokunoo26/focus-/releases)**
+
 
 ---
 
