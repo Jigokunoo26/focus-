@@ -53,3 +53,14 @@ app.*.map.json
 focus
 focus app
 focus icon
+
+# Privacy & Internal Planning Documents
+*.pdf
+*.docx
+chat of ( FOCUS ).*
+master_plan_extracted.txt
+stage1_foundations_plan.md
+mermaid-diagram.png
+*.jks
+*.keystore
+key.properties

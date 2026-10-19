@@ -1,80 +1,136 @@
 # FOCUS — Personal OS
 
-> **A minimal, local-first Personal Operating System for mobile and desktop.**
-> Built with Flutter, 100% offline SQLite persistence, Nothing OS dark monochrome minimalism, and Apple-grade frosted glass squircle aesthetics.
+<div align="center">
+
+![FOCUS Icon](assets/icons/app_icon.png)
+
+### **A Privacy-First, Zero-Cloud Personal Operating System**
+*Minimalist Nothing OS Aesthetics × Apple Frosted Glass Squircles*
+
+[![Flutter Tests](https://img.shields.io/badge/tests-23%2F23%20passed-brightgreen?style=flat-square)](test/)
+[![Analysis](https://img.shields.io/badge/flutter%20analyze-0%20issues-blue?style=flat-square)](lib/)
+[![License](https://img.shields.io/badge/license-MIT-black?style=flat-square)](LICENSE)
+[![Release](https://img.shields.io/badge/release-v1.0.0-white?style=flat-square&logo=github)](https://github.com/Jigokunoo26/focus-/releases)
 
 ---
 
-## 🚀 Overview
+### ⬇️ Direct Download Links (v1.0.0 Release)
 
-**FOCUS** is an offline productivity system engineered without cloud surveillance, without conversational AI overhead, and without data lock-in.
+| Platform | Download Link | Description |
+| :--- | :--- | :--- |
+| 🤖 **Android** | [**Download Android APK**](https://github.com/Jigokunoo26/focus-/releases/download/v1.0.0/FOCUS-Android-v1.0.0.apk) | Direct offline installer for all Android phones |
+| 🪟 **Windows** | [**Download Windows Desktop**](https://github.com/Jigokunoo26/focus-/releases/download/v1.0.0/FOCUS-Windows-v1.0.0.zip) | Portable Windows standalone bundle (`focus_app.exe`) |
+| 🍎 **iOS** | [**Download iOS Package**](https://github.com/Jigokunoo26/focus-/releases/download/v1.0.0/FOCUS-iOS-v1.0.0.ipa) | iOS application package for Xcode / Test deployment |
 
-### 🌟 Key Capabilities
-
-- **Phase 5 Critical Task & Alert Engine**:
-  - Deterministic 10-state lifecycle (`PENDING` → `SCHEDULED` → `TRIGGERING` → `TRIGGERED` → `ACKNOWLEDGED` / `SNOOZED` / `DISMISSED` / `COMPLETED` / `FAILED` / `DEAD_LETTER`).
-  - Persistent Outbox architecture preventing alert drops across system restarts.
-  - Optimistic revision locking for atomic updates.
-- **Phase 7 Focus Guard (Digital Wellbeing)**:
-  - Non-coercive intervention screen with 4 immediate exit choices (*Accept & Switch*, *Snooze 5m*, *Emergency Bypass*, *Modify Policy*).
-  - Safe foreground package observation (`canRetrieveWindowContent="false"` in AccessibilityService configuration).
-  - Zero keystroke logging, zero screen scraping, zero network traffic.
-  - 30-day auto-purged audit log.
-- **Outside-of-App Home Screen Widgets**:
-  - Android home screen app widgets for Timer, Tasks, Habits, and Daily Overview.
-  - iOS WidgetKit extension support.
-- **Stage 6 Offline Backup & Restore**:
-  - 1-tap clipboard JSON export and schema-validated atomic restore.
-- **Design System**:
-  - Nothing OS high-contrast dark monochrome typography & dot-matrix accents.
-  - Apple squircle frosted glass containers with backdrop blur.
+👉 **[View All Releases & Assets](https://github.com/Jigokunoo26/focus-/releases/latest)**
 
 ---
 
-## 📦 Multi-Platform Releases & Variants
+</div>
 
-Every release on GitHub includes 3 ready-to-run variants:
+## 🛡️ Privacy & Zero-Surveillance Architecture
 
-1. **Android**: `FOCUS-Android-v1.0.0.apk`
-   - Direct sideloadable release APK for any Android phone.
-2. **Windows Desktop**: `FOCUS-Windows-v1.0.0.zip`
-   - Standalone portable Windows desktop app bundle containing `focus_app.exe`.
-3. **iOS**: `FOCUS-iOS-v1.0.0.ipa` / `Runner.xcarchive`
-   - iOS application archive ready for Xcode or test device deployment.
+**FOCUS Personal OS** is engineered from the ground up to protect your privacy and attention:
+
+- **100% Offline-First Persistence**: Powered by SQLite (`drift`). All tasks, habit logs, focus sessions, and configuration remain solely on your device.
+- **Zero Cloud & Zero Telemetry**: No tracking SDKs, no external network requests, no remote logging, and no AI chat servers inspecting your notes. Operates completely in Airplane mode.
+- **Safe Digital Wellbeing (Focus Guard)**:
+  - Accessibility monitor strictly observes foreground package names without reading screen content (`canRetrieveWindowContent="false"`).
+  - No keylogging, no URL scraping, and no screenshot capture.
+  - Transparent 30-day auto-purged local audit log.
+- **Self-Sovereign Data**: Full 1-tap offline JSON export and restore directly from Settings.
 
 ---
 
-## 🛠️ Development & Testing
+## ✨ Core Features
 
-### Running Tests
+### 1. Critical Alert & Task Engine
+- Deterministic 10-state task lifecycle (`PENDING` → `SCHEDULED` → `TRIGGERING` → `TRIGGERED` → `ACKNOWLEDGED` / `SNOOZED` / `DISMISSED` / `COMPLETED` / `FAILED` / `DEAD_LETTER`).
+- Atomic outbox persistence pattern: ensures scheduled alerts survive device restarts or unexpected battery saver kills.
+- Optimistic revision locking preventing data conflicts.
+
+### 2. Focus Guard (Non-Coercive Digital Wellbeing)
+- Intercepts distracting app launches during active focus sessions.
+- Always provides **4 immediate, non-punitive exit choices**:
+  1. **Accept & Switch** (return to your focus session)
+  2. **Snooze 5m** (temporary grace period)
+  3. **Emergency Bypass** (instant access when urgently needed)
+  4. **Modify Policy** (adjust restrictions anytime)
+
+### 3. Outside-of-App Home Screen Widgets
+- Live widgets for your phone's home screen:
+  - **Focus Timer Widget**: Start and pause deep work without opening the app.
+  - **Tasks Glance Widget**: View pending priority tasks at a glance.
+  - **Daily Habits Widget**: Quick check-ins for active streaks.
+  - **Daily Overview Widget**: Completion metrics and timeline progress.
+
+### 4. Apple-Grade Squircle Glassmorphism & Nothing OS Monochromes
+- High-contrast pure dark mode with custom typography tokens.
+- Frosted glass cards with backdrop filtering.
+- Fully responsive across compact mobile displays (<360dp) up to desktop resolutions.
+
+---
+
+## 🏗️ Repository Architecture
+
+```text
+FOCUS/
+├── .github/workflows/       # Multi-platform CI/CD (Android, Windows, iOS)
+├── android/                 # Native Android adapter, accessibility service & widgets
+├── ios/                     # Native iOS Runner, WidgetKit Swift extension
+├── windows/                 # Windows desktop runner & resources
+├── assets/icons/            # High-resolution squircle app icons
+├── lib/
+│   ├── core/                # Design tokens, theme, glass widgets, responsive scaffold
+│   ├── data/                # SQLite database, drift DAOs, offline repositories
+│   ├── domain/              # Critical alert engine, policy rules, focus coordinators
+│   ├── features/            # Feature screens (Dashboard, Focus, Tasks, Habits, Settings)
+│   └── platform/            # Native method channels, widget sync, platform alerts
+└── test/                    # 23 automated unit, widget, and integration tests
+```
+
+---
+
+## 💻 How to Build from Source
+
+### Prerequisites
+- [Flutter SDK](https://docs.flutter.dev/get-started/install) (version `3.47.7` or later)
+- Dart SDK (`3.13.5` or later)
+
+### 1. Clone & Fetch Dependencies
+```bash
+git clone https://github.com/Jigokunoo26/focus-.git
+cd focus-
+flutter pub get
+```
+
+### 2. Run Test Suite & Static Analysis
 ```bash
 flutter test
-```
-*Current test suite: 23/23 unit and integration tests passing.*
-
-### Static Analysis
-```bash
 flutter analyze
 ```
-*0 issues found.*
 
-### Building Production Binaries
+### 3. Build Production Binaries
 
-- **Android Release APK**:
-  ```bash
-  flutter build apk --release
-  ```
-- **Windows Release Bundle**:
-  ```bash
-  flutter build windows --release
-  ```
-- **iOS IPA (on macOS)**:
-  ```bash
-  flutter build ipa --no-codesign
-  ```
+#### 🤖 Android APK
+```bash
+flutter build apk --release
+```
+*Output: `build/app/outputs/flutter-apk/app-release.apk`*
+
+#### 🪟 Windows Desktop
+```bash
+flutter build windows --release
+```
+*Output: `build/windows/x64/runner/Release/`*
+
+#### 🍎 iOS Bundle (macOS host with Xcode)
+```bash
+flutter build ipa --no-codesign
+```
+*Output: `build/ios/ipa/*.ipa`*
 
 ---
 
-## 🔒 Privacy & Local-First Architecture
-
-All user tasks, habits, focus logs, and settings are stored strictly on-device in a local SQLite database (`drift`/`sqlite3`). The application requires no external cloud account, communicates with no analytics servers, and operates flawlessly in complete airplane mode.
+## 📄 License
+This project is open-source under the [MIT License](LICENSE).
